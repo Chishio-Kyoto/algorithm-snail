@@ -14,6 +14,7 @@ public class Sample005 {
 
     public static int maxProduct(String[] words) {
         int[] flags = new int[words.length];
+        String[] flagsBinary = new String[words.length];
         for (int i = 0; i < words.length; i++) {
             for (char ch: words[i].toCharArray()) {
                 // c - 'a' 的取值范围为0～25
@@ -22,8 +23,10 @@ public class Sample005 {
                 int tc = flags[i] | 1 << (ch-'a');
                 flags[i] |= 1 << (ch-'a');
             }
+            flagsBinary[i] = Integer.toBinaryString(flags[i]);
         }
         System.out.println(Arrays.toString(flags));
+        System.out.println(Arrays.toString(flagsBinary));
 
         int result = 0;
         for (int i = 0; i < words.length; i++) {
