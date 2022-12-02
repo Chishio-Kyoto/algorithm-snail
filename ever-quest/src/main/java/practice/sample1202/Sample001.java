@@ -21,6 +21,11 @@ public class Sample001 {
         System.out.println(r3);
         System.out.println("程序运行时间: " + (e3 - s3) + "ns");  // 3762ns
 
+        long s4 = System.nanoTime();
+        int r4 = fibPlusPlusPlus(30);
+        long e4 = System.nanoTime();
+        System.out.println(r4);
+        System.out.println("程序运行时间: " + (e4 - s4) + "ns");  // 4005ns
     }
 
     public static int fib(int n) {
@@ -57,5 +62,18 @@ public class Sample001 {
             dp[i] = dp[i-1] + dp[i-2];
         }
         return dp[n];
+    }
+
+    // 进一步优化，无需dp table
+    public static int fibPlusPlusPlus(int n) {
+        if (n == 0) return 0;
+        if (n == 1 || n == 2) return 1;
+        int pre = 1; int curr = 1;
+        for (int i = 3; i < n; i++) {
+            int sum = pre + curr;
+            pre = curr;
+            curr = sum;
+        }
+        return curr;
     }
 }
