@@ -68,10 +68,10 @@ public class Sample001 {
     public static int fibPlusPlusPlus(int n) {
         if (n == 0) return 0;
         if (n == 1 || n == 2) return 1;
-        int pre = 1; int curr = 1;
-        for (int i = 3; i < n; i++) {
-            int sum = pre + curr;
-            pre = curr;
+        int prev = 1; int curr = 1;
+        for (int i = 3; i <= n; i++) {
+            int sum = prev + curr;
+            prev = curr;
             curr = sum;
         }
         return curr;
